@@ -32,7 +32,7 @@ export default function SecurityInfo() {
         <div className="secinfo__box">
           <h1 className="secinfo__title">Información de seguridad</h1>
           <p className="secinfo__subtitle secinfo__warning">
-            ⚠️ Te recomendamos estrictamente que actualices tu contraseña y tu número de teléfono lo antes posible para mantener tu cuenta segura.
+            ⚠️ Para continuar utilizando tu cuenta, es obligatorio que actualices tu contraseña y verifiques tu número de teléfono.
           </p>
 
           <div className="secinfo__card">
