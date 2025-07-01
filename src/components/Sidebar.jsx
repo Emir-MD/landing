@@ -9,9 +9,8 @@ import {
   AppWindow,
   UsersRound,
 } from "lucide-react";
-import "./sidebar.css";           // ← importa el CSS dedicado
+import "./sidebar.css";
 
-/* Menú con agrupación */
 const menu = [
   { label: "Información general", icon: User, group: 1 },
   { label: "Información de seguridad", icon: Shield, group: 1 },

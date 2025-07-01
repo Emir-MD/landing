@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-.sidebar__name  { margin-top: .75rem; font-weight: 600; font-size: 14px; }
+.sidebar__name  { margin-top: .75rem; font-weight: 600; font-size: 14px;color: #000000; }
 .sidebar__email { font-size: 12px;  color: #64748b; } /* slate-500 */
 
 /* -------------- Navegación -------------- */
