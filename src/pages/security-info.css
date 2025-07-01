@@ -1,0 +1,121 @@
+/* 1️⃣  Carga Segoe UI (Regular & Semibold) si no existe localmente */
+@import url("https://fonts.cdnfonts.com/css/segoe-ui-4");
+
+/* ---------------- Variables globales ---------------- */
+:root {
+  /* Fuente */
+  --font: "Segoe UI Variable Text", "Segoe UI", "Segoe UI", system-ui, sans-serif;
+
+  /* Colores de texto */
+  --txt-main:  #1f1f1f;
+  --txt-head:  #2f2f2f;
+  --txt-muted: #616161;
+  --txt-link:  #0067c0;
+
+  /* Fondos */
+  --bg-page: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-add:  #fafafa;
+  --bg-add-h:#f3f3f3;
+
+  /* Bordes */
+  --brd-row: #e1e1e1;
+  --radius:  4px;
+}
+
+/* ---------------- Envoltura de la vista ---------------- */
+.secinfo {
+  font-family: var(--font);
+  background: var(--bg-page);
+  color: var(--txt-main);
+  padding: 40px 24px 80px;
+}
+
+/* Caja interior (fluida con 32 px laterales, pero máx 1024 px para legibilidad) */
+.secinfo__box {
+  margin: 0 32px;
+  max-width: 1024px;     /* ⇠ opcional; quítalo si la quieres full-width */
+}
+
+/* ---------------- Encabezados ---------------- */
+.secinfo__title {
+  font-size: 24px;
+  font-weight: 600;      /* con la nueva fuente ya no hace falta bajar a 550 */
+  margin-bottom: 12px;
+  color: var(--txt-head);
+}
+.secinfo__subtitle {
+  font-size: 14px;
+  color: var(--txt-muted);
+  margin-bottom: 4px;
+}
+.secinfo__note {
+  font-size: 13px;
+  color: var(--txt-muted);
+  margin-bottom: 24px;
+}
+
+/* ---------------- Tarjeta ---------------- */
+.secinfo__card {
+  background: var(--bg-card);
+  border: 1px solid var(--brd-row);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* Fila “+ Agregar método” */
+.secinfo__add {
+  background: var(--bg-add);
+  padding: 12px 20px;
+  font-size: 13px;
+  color: var(--txt-link);
+  cursor: pointer;
+}
+.secinfo__add:hover { background: var(--bg-add-h); }
+
+/* ---------------- Filas de métodos ---------------- */
+.secinfo__row {
+  display: grid;
+  grid-template-columns: 44px 260px 1fr 130px; /* icon · label · extra · acciones */
+  align-items: center;
+  padding: 0 20px;
+  height: 44px;
+  border-top: 1px solid var(--brd-row);
+  font-size: 13px;
+}
+
+.secinfo__icon  { text-align: center; }
+
+.secinfo__main  { line-height: 1.2; }
+.secinfo__main small {
+  display: block;
+  font-size: 11px;
+  color: var(--txt-muted);
+}
+
+.secinfo__extra { color: var(--txt-muted); }
+
+/* Acciones Cambiar / Eliminar */
+.secinfo__actions button {
+  background: none;
+  border: none;
+  margin-left: 16px;
+  font-size: 13px;
+  font-weight: 500;      /* semibold real con la nueva fuente */
+  color: var(--txt-link);
+  cursor: pointer;
+}
+.secinfo__actions button:hover { text-decoration: underline; }
+
+/* ---------------- Footer ---------------- */
+.secinfo__footer {
+  margin-top: 16px;
+  font-size: 13px;
+}
+.secinfo__footer button {
+  background: none;
+  border: none;
+  color: var(--txt-link);
+  cursor: pointer;
+}
+.secinfo__footer button:hover { text-decoration: underline; }

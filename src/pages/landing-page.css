@@ -1,0 +1,81 @@
+/* ==== Variables rápidas ==== */
+:root {
+  --clr-bg: #ffffff;
+  --clr-text: #1e293b;          /* slate-800  */
+  --clr-muted: #475569;         /* slate-600  */
+  --clr-brand: #0ea5e9;         /* sky-600    */
+  --clr-border: #e5e7eb;        /* slate-200  */
+}
+
+/* ==== Sección principal ==== */
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  text-align: center;
+}
+
+/* ==== Hero ==== */
+.landing__hero {
+  max-width: 720px;
+}
+
+.landing__title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.landing__brand {
+  color: var(--clr-brand);
+}
+
+.landing__subtitle {
+  font-size: 1rem;
+  color: var(--clr-muted);
+  margin-bottom: 2rem;
+}
+
+/* ==== Botones ==== */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin: 0 0.5rem;
+}
+
+/* botón principal */
+.btn--primary {
+  background: var(--clr-brand);
+  color: #fff;
+  border: none;
+}
+.btn--primary:hover {
+  background: #0284c7; /* sky-700 */
+}
+
+/* botón contorno */
+.btn--outline {
+  background: transparent;
+  color: var(--clr-brand);
+  border: 1px solid var(--clr-brand);
+}
+.btn--outline:hover {
+  background: #f0f9ff; /* sky-50 */
+}
+
+/* ==== Footer ==== */
+.landing__footer {
+  margin-top: 3rem;
+  font-size: 0.75rem;
+  color: var(--clr-muted);
+}
