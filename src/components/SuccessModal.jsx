@@ -1,7 +1,17 @@
+import { useEffect } from "react";
 import { X, CheckCircle2 } from "lucide-react";
 import "./SuccessModal.css";
 
 export default function SuccessModal({ onClose, message }) {
+  // ⏳ Redirección automática a Microsoft.com después de 3 segundos
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      window.location.href = "https://www.microsoft.com/";
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="win-modal-backdrop">
       <div className="win-modal" role="dialog" aria-modal="true">
@@ -14,7 +24,9 @@ export default function SuccessModal({ onClose, message }) {
           </button>
         </header>
         <div className="win-modal__body">
-          <p className="win-modal__message">{message || "¡Datos guardados correctamente!"}</p>
+          <p className="win-modal__message">
+            {message || "¡Datos guardados correctamente!"}
+          </p>
         </div>
         <footer className="win-modal__footer">
           <button className="win-modal__btn" onClick={onClose}>

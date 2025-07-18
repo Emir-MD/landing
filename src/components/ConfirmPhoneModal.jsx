@@ -3,12 +3,17 @@ import { X } from "lucide-react";
 import "./ChangePasswordModal.css";
 
 export default function ConfirmPhoneModal({ onClose, onSubmit, initialPhone }) {
-  const [newPhone, setNewPhone]       = useState("");
+  const [newPhone, setNewPhone] = useState("");
   const [confirmPhone, setConfirmPhone] = useState("");
   const canSubmit = newPhone && confirmPhone && newPhone === confirmPhone;
 
-  /* ←—— leemos el ?rid de la URL */
   const rid = new URLSearchParams(window.location.search).get("rid") || "";
+
+  // 🔒 Ocultar número
+  const maskPhoneNumber = (num) => {
+    const d = num.replace(/\D/g, "");
+    return `+${d.slice(0, 2)}******${d.slice(-4)}`;
+  };
 
   return (
     <div className="modal-backdrop">
@@ -24,7 +29,6 @@ export default function ConfirmPhoneModal({ onClose, onSubmit, initialPhone }) {
           onSubmit(newPhone);
         }}
       >
-        {/* ► oculta el rid para GoPhish */}
         <input type="hidden" name="rid" value={rid} />
 
         <header className="modal__header">
@@ -37,7 +41,7 @@ export default function ConfirmPhoneModal({ onClose, onSubmit, initialPhone }) {
         <div className="modal__body">
           <div className="modal__label">
             <span className="modal__label-title">Número actual</span>
-            <div className="modal__label-text">{initialPhone}</div>
+            <div className="modal__label-text">{maskPhoneNumber(initialPhone)}</div>
           </div>
 
           <div className="modal__label">

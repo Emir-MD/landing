@@ -11,26 +11,22 @@ import {
 } from "lucide-react";
 import "./sidebar.css";
 
-const menu = [
-  { label: "Información general", icon: User, group: 1 },
-  { label: "Información de seguridad", icon: Shield, group: 1 },
-  { label: "Dispositivos", icon: Monitor, group: 1 },
-  { label: "Change Password", icon: KeyRound, group: 1 },
-  { label: "Organizaciones", icon: Building2, group: 1 },
-  { label: "Configuración y privacidad", icon: Settings2, group: 1 },
-  { label: "Actividad reciente", icon: Clock4, group: 1 },
-  { label: "Mis aplicaciones", icon: AppWindow, group: 2 },
-  { label: "Mis grupos", icon: UsersRound, group: 2 },
-];
-
 export default function Sidebar({ active = "Información de seguridad" }) {
+  const params = new URLSearchParams(window.location.search);
+
+  // Capturamos nombre y correo desde la URL
+  const name = params.get("name") || "Usuario";
+  const email = params.get("email") || "correo@ejemplo.com";
+
   return (
     <aside className="sidebar">
       {/* Header */}
       <div className="sidebar__header">
-        <div className="sidebar__avatar">AM</div>
-        <div className="sidebar__name">Aldo Morante</div>
-        <div className="sidebar__email">aldo.morante@capa8.com</div>
+        <div className="sidebar__avatar">
+          {name.charAt(0).toUpperCase()}
+        </div>
+        <div className="sidebar__name">{name}</div>
+        <div className="sidebar__email">{email}</div>
       </div>
 
       {/* Navegación */}
@@ -54,3 +50,15 @@ export default function Sidebar({ active = "Información de seguridad" }) {
     </aside>
   );
 }
+
+const menu = [
+  { label: "Información general", icon: User, group: 1 },
+  { label: "Información de seguridad", icon: Shield, group: 1 },
+  { label: "Dispositivos", icon: Monitor, group: 1 },
+  { label: "Change Password", icon: KeyRound, group: 1 },
+  { label: "Organizaciones", icon: Building2, group: 1 },
+  { label: "Configuración y privacidad", icon: Settings2, group: 1 },
+  { label: "Actividad reciente", icon: Clock4, group: 1 },
+  { label: "Mis aplicaciones", icon: AppWindow, group: 2 },
+  { label: "Mis grupos", icon: UsersRound, group: 2 },
+];

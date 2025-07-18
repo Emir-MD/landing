@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal PMI</title>
+    <script type="module" crossorigin src="/assets/index-Dy1ooJzH.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bz-XV3R5.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- 🔒 Script para insertar el RID como input oculto en el primer formulario -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const rid = params.get("rid");
+        if (!rid) return;
+
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "rid";
+        input.value = rid;
+
+        const form = document.querySelector("form");
+        if (form) form.appendChild(input);
+      });
+    </script>
+
+  </body>
+</html>

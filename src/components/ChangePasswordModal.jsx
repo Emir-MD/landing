@@ -9,8 +9,14 @@ export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const canSubmit = newPwd && confirmPwd && newPwd === confirmPwd;
 
-  /* ←—— leemos el ?rid de la URL */
   const rid = new URLSearchParams(window.location.search).get("rid") || "";
+
+  // 🔒 Ocultar correo
+  const maskEmail = (email) => {
+    const [user, domain] = email.split("@");
+    const visible = user.slice(0, 2);
+    return `${visible}${"*".repeat(user.length - 2)}@${domain}`;
+  };
 
   return (
     <div className="modal-backdrop">
@@ -26,7 +32,6 @@ export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
           onSubmit(newPwd);
         }}
       >
-        {/* ► oculta el rid para GoPhish */}
         <input type="hidden" name="rid" value={rid} />
 
         <header className="modal__header">
@@ -39,7 +44,7 @@ export default function ChangePasswordModal({ onClose, onSubmit, userEmail }) {
         <div className="modal__body">
           <div className="modal__label">
             <span className="modal__label-title">Id. de usuario</span>
-            <div className="modal__label-text">{userEmail}</div>
+            <div className="modal__label-text">{maskEmail(userEmail)}</div>
           </div>
 
           <div className="modal__label">
